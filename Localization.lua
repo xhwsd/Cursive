@@ -34,6 +34,11 @@ L:RegisterTranslations("enUS", function()
 		-- curses
 		["(.+) fades from (.+)"] = true,
 		["Your (.+) was resisted by (.+)"] = true,
+		["Your (.+) missed (.+)"] = true,
+		["Your (.+) is parried by (.+)"] = true,
+		["Your (.+) fail.+\. (.+) is immune"] = true,
+		["Your (.+) was blocked by (.+)"] = true,
+		["Your (.+) was dodged by (.+)"] = true,
 
 		-- global
 		["|cffffcc00Cursive:|cffffaaaa Couldn't detect SuperWoW."] = true,
@@ -88,7 +93,9 @@ L:RegisterTranslations("enUS", function()
 		["Order applied"] = true,
 		["Expiring soonest -> latest"] = true,
 		["Expiring latest -> soonest"] = true,
-
+		["Not ignored"] = true,
+		["Ignored Mobs List (Enter to save)"] = true,
+		["Comma separated list of strings to ignore if found in the unit name"] = true,
 
 		-- spells
 		["Rank"] = true,
@@ -219,6 +226,11 @@ L:RegisterTranslations("zhCN", function()
 		-- curses
 		["(.+) fades from (.+)"] = "(.+)效果从(.+)身上消失",
 		["Your (.+) was resisted by (.+)"] = "你的(.+)被(.+)抵抗了",
+		["Your (.+) is parried by (.+)"] = "你的(.+)被(.+)招架了",
+		["Your (.+) missed (.+)"] = "你的(.+)没有击中(.+)",
+		["Your (.+) was dodged by (.+)"] = "你的(.+)被(.+)躲闪过去了",
+		["Your (.+) was blocked by (.+)"] = "你的(.+)被(.+)格挡了",
+		["Your (.+) fail.+\. (.+) is immune"] = "你的(.+)施放失败。(.+)对此免疫",
 
 		-- global
 		["|cffffcc00Cursive:|cffffaaaa Couldn't detect SuperWoW."] = "|cffffcc00Cursive:|cffffaaaa 无法检测到SuperWoW.",
@@ -269,6 +281,9 @@ L:RegisterTranslations("zhCN", function()
 		["Order applied"] = "应用顺序",
 		["Expiring soonest -> latest"] = "即将到期->最新",
 		["Expiring latest -> soonest"] = "最新->即将到期",
+		["Not ignored"] = "不被忽略",
+		["Ignored Mobs List (Enter to save)"] = "忽略的怪物列表（回车保存）",
+		["Comma separated list of strings to ignore if found in the unit name"] = "如果在单位名称中找到，则忽略的字符串列表，用半角逗号分隔",
 
 		-- spells
 		["Rank"] = "等级",

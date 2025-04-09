@@ -32,6 +32,11 @@ local curses = {
 -- combat events for curses
 local fades_test = L["(.+) fades from (.+)"]
 local resist_test = L["Your (.+) was resisted by (.+)"]
+local missed_test = L["Your (.+) missed (.+)"]
+local parry_test = L["Your (.+) is parried by (.+)"]
+local immune_test = L["Your (.+) fail.+\. (.+) is immune"]
+local block_test = L["Your (.+) was blocked by (.+)"]
+local dodge_test = L["Your (.+) was dodged by (.+)"]
 
 local lastGuid = nil
 
@@ -222,8 +227,32 @@ end)
 
 Cursive:RegisterEvent("CHAT_MSG_SPELL_SELF_DAMAGE",
 		function(message)
-			-- check for resist
-			local _, _, spellName, target = string.find(message, resist_test)
+			local spell_failed_tests = {
+				resist_test,
+				immune_test
+			}
+			-- only some classes have melee spells that need to check for dodge, parry, miss, block
+			if playerClassName == "DRUID" or playerClassName == "HUNTER" or playerClassName == "ROGUE" then
+				spell_failed_tests = {
+					resist_test,
+					immune_test,
+					missed_test,
+					parry_test,
+					block_test,
+					dodge_test
+				}
+			end
+
+			local spellName, target
+			for _, test in pairs(spell_failed_tests) do
+				local _, _, foundSpell, foundTarget = string.find(message, test)
+				if foundSpell and foundTarget then
+					spellName = foundSpell
+					target = foundTarget
+					break
+				end
+			end
+
 			if spellName and target then
 				spellName = string.lower(spellName)
 
